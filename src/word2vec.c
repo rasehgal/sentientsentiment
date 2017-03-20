@@ -123,6 +123,7 @@ int ReadWordIndex(FILE *fin) {
 
 // Adds a word to the vocabulary
 int AddWordToVocab(char *word) {
+  printf("%s", word);
   unsigned int hash, length = strlen(word) + 1;
   if (length > MAX_STRING) length = MAX_STRING;
   vocab[vocab_size].word = (char *)calloc(length, sizeof(char));

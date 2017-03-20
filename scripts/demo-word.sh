@@ -4,9 +4,9 @@ DATA_DIR=../data
 BIN_DIR=../bin
 SRC_DIR=../src
 
-TEXT_DATA=$DATA_DIR/text8
+TEXT_DATA=$DATA_DIR/text6
 ZIPPED_TEXT_DATA="${TEXT_DATA}.zip"
-VECTOR_DATA=$DATA_DIR/text8-vector.bin
+VECTOR_DATA=$DATA_DIR/text6-vector.bin
 
 pushd ${SRC_DIR} && make; popd
 
@@ -14,10 +14,8 @@ if [ ! -e $VECTOR_DATA ]; then
   
   if [ ! -e $TEXT_DATA ]; then
     if [ ! -e $ZIPPED_TEXT_DATA ]; then
-	    wget http://mattmahoney.net/dc/text8.zip -O $ZIPPED_TEXT_DATA
-	fi
-    unzip $ZIPPED_TEXT_DATA
-	mv text8 $TEXT_DATA
+        wget http://norvig.com/big.txt
+    fi
   fi
   echo -----------------------------------------------------------------------------------------------------
   echo -- Training vectors...
@@ -29,3 +27,5 @@ echo ---------------------------------------------------------------------------
 echo -- distance...
 
 $BIN_DIR/distance $DATA_DIR/$VECTOR_DATA
+
+
